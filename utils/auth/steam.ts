@@ -13,9 +13,9 @@ let steamRelyingParty: openid.RelyingParty | null = null;
 
 export default function getSteamRelyingParty(): openid.RelyingParty {
 
-    const url = getURL(false);
-
     if (!steamRelyingParty) {
+
+        const url = getURL(false);
 
         steamRelyingParty = new openid.RelyingParty(`${url}/auth/steam/callback`, url, true, true, []);
 
