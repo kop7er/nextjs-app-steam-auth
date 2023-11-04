@@ -1,6 +1,6 @@
 {
   "name": "nextjs-app-steam-auth",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Next.js App router with Steam auth",
   "homepage": "https://github.com/kop7er/nextjs-app-steam-auth#readme",
   "bugs": {
@@ -19,7 +19,7 @@
     "start": "next start"
   },
   "dependencies": {
-    "next": "13.5.4",
+    "next": "14.0.1",
     "openid": "^2.0.10",
     "react": "^18",
     "react-dom": "^18",
@@ -27,12 +27,12 @@
   },
   "devDependencies": {
     "@types/node": "^20",
-    "@types/openid": "^2.0.3",
+    "@types/openid": "^2.0.4",
     "@types/react": "^18",
     "@types/react-dom": "^18",
     "autoprefixer": "^10",
     "eslint": "^8",
-    "eslint-config-next": "13.5.4",
+    "eslint-config-next": "14.0.1",
     "postcss": "^8",
     "tailwindcss": "^3",
     "typescript": "^5"

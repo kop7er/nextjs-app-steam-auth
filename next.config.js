@@ -3,7 +3,12 @@ const nextConfig = {
 
     images: {
 
-        domains: ["avatars.steamstatic.com"]
+        remotePatterns: [
+            {
+                protocol: "https",
+                hostname: "avatars.steamstatic.com"
+            }
+        ]
 
     }
 
