@@ -11,17 +11,13 @@ const OPENID_CHECK = {
 
 let steamRelyingParty: openid.RelyingParty | null = null;
 
-export default function getSteamRelyingParty(url: string): openid.RelyingParty {
+export default function getSteamRelyingParty(): openid.RelyingParty {
+
+    const url = getURL(false);
 
     if (!steamRelyingParty) {
 
-        steamRelyingParty = new openid.RelyingParty(
-            `${url}/auth/steam/callback`,
-            url,
-            true,
-            true,
-            []
-        );
+        steamRelyingParty = new openid.RelyingParty(`${url}/auth/steam/callback`, url, true, true, []);
 
     }
 
@@ -31,9 +27,7 @@ export default function getSteamRelyingParty(url: string): openid.RelyingParty {
 
 export async function getSteamAuthenticationURL(): Promise<string> {
 
-    const url = getURL(false);
-
-    const steamRelyingParty = getSteamRelyingParty(url);
+    const steamRelyingParty = getSteamRelyingParty();
 
     return await new Promise<string>((resolve, reject) => {
 
@@ -51,9 +45,7 @@ export async function getSteamAuthenticationURL(): Promise<string> {
 
 export async function getSteamUserIdentifier(request: NextRequest): Promise<string> {
 
-    const url = getURL(false);
-
-    const steamRelyingParty = getSteamRelyingParty(url);
+    const steamRelyingParty = getSteamRelyingParty();
 
     return await new Promise<string>((resolve, reject) => {
 
@@ -75,9 +67,7 @@ export async function getSteamUserIdentifier(request: NextRequest): Promise<stri
 
             const claimedIdentifier = result!.claimedIdentifier!;
 
-            const match = claimedIdentifier.match(/https?:\/\/steamcommunity\.com\/openid\/id\/(\d+)/);
-
-            if (!match) {
+            if (!claimedIdentifier.match(/https?:\/\/steamcommunity\.com\/openid\/id\/(\d+)/)) {
 
                 reject(new Error("Invalid Steam identifier."));
 
